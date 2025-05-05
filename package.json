@@ -4,6 +4,7 @@
     "type": "git",
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
+  "homepage": "https://vemetric.com/docs/sdks/web-browser",
   "version": "0.0.15",
   "description": "The Vemetric SDK for the Web (Browser)",
   "main": "./dist/index.js",
