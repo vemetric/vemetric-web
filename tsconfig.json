@@ -1,0 +1,22 @@
+{
+  "display": "Default",
+  "compilerOptions": {
+    "target": "ES2017",
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
+}
