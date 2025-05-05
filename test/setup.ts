@@ -1,3 +1,5 @@
+import { beforeEach, vi } from 'vitest';
+
 // Mock browser environment
 const sessionStorageMock = {
   store: {},
@@ -10,7 +12,7 @@ const sessionStorageMock = {
   }),
   clear: vi.fn(() => {
     sessionStorageMock.store = {};
-  })
+  }),
 };
 
 global.sessionStorage = sessionStorageMock;
@@ -25,23 +27,26 @@ global.window = {
     pushState: vi.fn(),
   },
   addEventListener: vi.fn(),
-  sessionStorage
+  sessionStorage,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any;
 
 global.document = {
   referrer: '',
   addEventListener: vi.fn(),
   currentScript: null,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any;
 
 global.navigator = {
   sendBeacon: vi.fn(),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 } as any;
 
 global.XMLHttpRequest = vi.fn().mockImplementation(() => {
   const xhr = {
     open: vi.fn(),
-    send: vi.fn((data) => {
+    send: vi.fn(() => {
       // Immediately trigger the onload callback to simulate synchronous response
       if (xhr.onload) {
         setTimeout(() => xhr.onload?.call(xhr), 0);
