@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/Vemetric/vemetric-js.git"
   },
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "The Vemetric SDK for the Web (Browser)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -18,7 +18,7 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "keywords": [],
+  "keywords": ["typescript", "browser", "sdk", "web", "vemetric"],
   "author": "Vemetric",
   "license": "MIT",
   "devDependencies": {
