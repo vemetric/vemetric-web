@@ -5,14 +5,14 @@
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/web-browser",
-  "version": "0.0.15",
+  "version": "0.1.0",
   "description": "The Vemetric SDK for the Web (Browser)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "prepublish": "pnpm run build",
-    "build": "tsup",
+    "build": "tsup && node after-build.mjs",
     "dev": "npm run build -- --watch",
     "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx . --fix",
     "publish-cdn": "npm run build && node publish-cdn.mjs",

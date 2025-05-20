@@ -14,6 +14,8 @@ export type Options = {
   trackDataAttributes?: boolean;
   allowCookies?: boolean;
   maskPaths?: string[];
+  sdk?: string;
+  sdkVersion?: string;
 };
 
 const DEFAULT_OPTIONS: Options = {
@@ -24,6 +26,8 @@ const DEFAULT_OPTIONS: Options = {
   trackDataAttributes: true,
   allowCookies: false,
   maskPaths: [],
+  sdk: 'web',
+  sdkVersion: '%VEMETRIC_SDK_VERSION%',
 };
 
 const DATA_ATTRIBUTE_EVENT = 'data-vmtrc';
@@ -105,6 +109,8 @@ function getBaseHeaders(options: Options) {
     Token: options.token,
     'Allow-Cookies': String(Boolean(options.allowCookies)),
     'V-Host': hostHeader,
+    'V-SDK': options.sdk,
+    'V-SDK-Version': options.sdkVersion,
   };
 }
 
@@ -153,13 +159,13 @@ class Vemetric {
       throw new Error('Please provide your Public Token.');
     }
 
-    if (isLocalhost()) {
-      console.warn('Vemetric is ignoring requests because it is running on localhost.');
-    }
-
     this.options = { ...DEFAULT_OPTIONS, ...options };
     this.options.maskPaths?.sort((a, b) => b.length - a.length);
     this.isInitialized = true;
+
+    if (isLocalhost()) {
+      console.warn('Vemetric is ignoring requests because it is running on localhost.');
+    }
 
     window.addEventListener('beforeunload', () => {
       this.trackPageLeave();

@@ -60,7 +60,7 @@ if (scriptElement) {
   }
 }
 
-vemetric.init(options);
+vemetric.init({ ...options, sdk: 'script' });
 window.vmtrc = (...queueItem: QueueItem) => {
   const [methodName, ...args] = queueItem;
   return executeMethod(methodName, ...args);

@@ -1,8 +1,5 @@
-import { readFileSync } from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 import AWS from 'aws-sdk';
-
+import { buildScript } from './build-script.mjs';
 const s3Endpoint = process.env.S3_ENDPOINT;
 const s3AccessKeyId = process.env.S3_ACCESS_KEY_ID;
 const s3SecretAccessKey = process.env.S3_SECRET_ACCESS_KEY;
@@ -41,22 +38,13 @@ async function uploadObject(params) {
   }
 }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const { version } = JSON.parse(readFileSync(join(__dirname, 'package.json'), 'utf8'));
-
-const distDir = join(__dirname, 'dist');
-
-const mainJs =
-  readFileSync(join(distDir, 'main.js'), 'utf8').replace('"use strict";', '"use strict";(function (){') + '})();';
-const versionedMainJs = `/*${version}*/${mainJs}`;
+const mainJs = buildScript();
 
 await uploadObject({
   key: `main.js`,
-  body: versionedMainJs,
+  body: mainJs,
 });
 await uploadObject({
   key: `${version}/main.js`,
-  body: versionedMainJs,
+  body: mainJs,
 });
