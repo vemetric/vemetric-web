@@ -5,7 +5,7 @@
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "The Vemetric SDK for React",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
