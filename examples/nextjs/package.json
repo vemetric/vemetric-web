@@ -1,0 +1,25 @@
+{
+  "name": "@vemetric/nextjs-example",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack --port 8080",
+    "build": "next build",
+    "start": "next start --port 8080",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@vemetric/react": "file:../../packages/react",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.3.2"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "@eslint/eslintrc": "^3"
+  }
+}

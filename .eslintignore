@@ -1,3 +1,4 @@
 .eslintrc.cjs
 dist/
 publish-cdn.mjs
+examples/

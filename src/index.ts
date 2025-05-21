@@ -1,5 +1,3 @@
-import { retry } from './retry';
-
 declare global {
   interface Window {
     _vmCtx: string | null;
@@ -152,7 +150,7 @@ class Vemetric {
 
   init(options: Options) {
     if (this.isInitialized) {
-      return;
+      return false;
     }
 
     if (!options.token || options.token.length < 3) {
@@ -181,6 +179,8 @@ class Vemetric {
     if (this.options.trackDataAttributes) {
       this.enableTrackDataAttributes();
     }
+
+    return true;
   }
 
   private checkInitialized() {
@@ -348,12 +348,12 @@ class Vemetric {
   updateUser(data: UserDataProps) {
     this.checkInitialized();
 
-    retry({
-      interval: 1000,
-      maxRetries: 5,
-      shouldRetry: () => this.isIdentifying,
-      callback: () => this.sendRequest('/u', { data }),
-    });
+    if (this.isIdentifying) {
+      console.warn('Vemetric is identifying, skipping updateUser');
+      return;
+    }
+
+    this.sendRequest('/u', { data });
   }
 
   async resetUser() {
