@@ -1,4 +1,4 @@
-![Screenshot of Web SDK Website](https://github.com/user-attachments/assets/6402d527-180a-45ab-9e2c-7072f45c352a)
+![Vemetric Web SDK](https://github.com/user-attachments/assets/6ae9573b-70f5-4d98-92e0-c2d8e165138b)
 
 # The Vemetric SDK for the Web (Browser)
 
