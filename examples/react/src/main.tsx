@@ -6,7 +6,13 @@ import { VemetricScript } from '@vemetric/react';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <VemetricScript token="o1rySsGlUtFCyflo" host="https://hub.vemetric.local" />
+    <VemetricScript
+      token="o1rySsGlUtFCyflo"
+      host="https://hub.vemetric.local"
+      onInit={() => {
+        console.log('Vemetric initialized');
+      }}
+    />
     <App />
   </StrictMode>,
 );
