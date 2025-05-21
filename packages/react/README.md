@@ -1,4 +1,4 @@
-![Screenshot of React SDK Website](https://github.com/user-attachments/assets/6402d527-180a-45ab-9e2c-7072f45c352a)
+![Vemetric React SDK](https://github.com/user-attachments/assets/37934d85-0b75-4288-a5d3-2c976715fa0b)
 
 # The Vemetric SDK for React
 
