@@ -6,7 +6,7 @@
   },
   "homepage": "https://vemetric.com/docs/sdks/react",
   "version": "0.1.8",
-  "description": "The Vemetric SDK for React",
+  "description": "Official React SDK for Vemetric",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
