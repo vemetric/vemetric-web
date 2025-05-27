@@ -1,28 +1,27 @@
 {
-  "name": "@vemetric/web",
+  "name": "@vemetric/astro",
   "repository": {
     "type": "git",
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
-  "homepage": "https://vemetric.com/docs/sdks/web-browser",
+  "homepage": "https://vemetric.com/docs/sdks/astro",
   "version": "0.1.9",
-  "description": "Official Web (Browser) SDK for Vemetric",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "description": "Official Astro SDK for Vemetric",
+  "exports": {
+    ".": {
+      "import": "./dist/component.ts"
+    }
+  },
   "scripts": {
     "prepublish": "pnpm run build",
-    "build": "tsup && node after-build.mjs",
+    "build": "tsup && node after-build.mjs && pnpm copy-astro",
+    "copy-astro": "cp src/component.ts dist/ && cp src/index.astro dist/",
     "dev": "npm run build -- --watch",
-    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx . --fix",
-    "publish-cdn": "npm run build && node publish-cdn.mjs",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "new-version": "node new-version.mjs"
+    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx . --fix"
   },
   "keywords": [
     "typescript",
-    "browser",
+    "astro",
     "sdk",
     "web",
     "vemetric"
@@ -32,7 +31,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
-    "aws-sdk": "^2.1692.0",
     "eslint": "^8.53.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.0.1",

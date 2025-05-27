@@ -1,0 +1,36 @@
+---
+import type { Options } from './vemetric.d.ts';
+type Props = Omit<Options, 'sdk' | 'sdkVersion'>;
+
+const propsStr = JSON.stringify(Astro.props);
+---
+
+<vemetric-script data-props={propsStr}></vemetric-script>
+
+<script>
+  // @ts-expect-error the Astro component is not bundled with tsup but just copied to the dist folder
+  import { vemetric } from './vemetric.mjs';
+
+  customElements.define(
+    'vemetric-script',
+    class VemetricScript extends HTMLElement {
+      constructor() {
+        super();
+        try {
+          const props = JSON.parse(this.dataset.props ?? '{}');
+          vemetric.init({
+            ...props,
+            trackPageViews: false,
+            sdk: 'astro',
+          });
+
+          document.addEventListener('astro:page-load', () => {
+            vemetric.trackPageView();
+          });
+        } catch (err) {
+          throw new Error(`Failed to parse VemetricScript properties: ${err}`);
+        }
+      }
+    },
+  );
+</script>

@@ -5,7 +5,7 @@
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/react",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Official React SDK for Vemetric",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -29,7 +29,6 @@
     "@types/react": "^19.1.4",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
-    "aws-sdk": "^2.1692.0",
     "eslint": "^8.53.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.0.1",

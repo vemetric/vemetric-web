@@ -24,3 +24,6 @@ jobs:
       - run: cd packages/react && pnpm i && pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: cd packages/astro && pnpm i && pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
