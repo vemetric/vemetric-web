@@ -1,5 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { vemetric, Options } from '../src/index';
+import { Vemetric, Options } from '../src/client';
+
+const vemetric = new Vemetric();
 
 describe('URL Masking', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
