@@ -9,12 +9,8 @@ const { version } = JSON.parse(readFileSync(join(__dirname, 'package.json'), 'ut
 
 const distDir = join(__dirname, 'dist');
 
-const indexJs = readFileSync(join(distDir, 'index.js'), 'utf8').replace('%VEMETRIC_SDK_VERSION%', version);
-const indexMjs = readFileSync(join(distDir, 'index.mjs'), 'utf8').replace('%VEMETRIC_SDK_VERSION%', version);
 const mainJs = readFileSync(join(distDir, 'main.js'), 'utf8').replace('%VEMETRIC_SDK_VERSION%', version);
 const mainMjs = readFileSync(join(distDir, 'main.mjs'), 'utf8').replace('%VEMETRIC_SDK_VERSION%', version);
 
-writeFileSync(join(distDir, 'index.js'), indexJs);
-writeFileSync(join(distDir, 'index.mjs'), indexMjs);
 writeFileSync(join(distDir, 'main.js'), mainJs);
 writeFileSync(join(distDir, 'main.mjs'), mainMjs);

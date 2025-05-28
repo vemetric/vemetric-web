@@ -9,6 +9,7 @@ createRoot(document.getElementById('root')!).render(
     <VemetricScript
       token="o1rySsGlUtFCyflo"
       host="https://hub.vemetric.local"
+      scriptUrl="https://cdn.vemetric.local/main.js"
       onInit={() => {
         console.log('Vemetric initialized');
       }}

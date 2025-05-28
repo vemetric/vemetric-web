@@ -1,6 +1,6 @@
 'use client';
 import { useEffect } from 'react';
-import { Options, vemetric } from '../../../src/index';
+import { type Options, vemetric } from '../../../src/index';
 
 interface Props extends Options {
   onInit?: () => void;

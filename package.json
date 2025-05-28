@@ -5,7 +5,7 @@
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/web-browser",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Official Web (Browser) SDK for Vemetric",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -18,7 +18,8 @@
     "publish-cdn": "npm run build && node publish-cdn.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "new-version": "node new-version.mjs"
+    "new-version": "node new-version.mjs",
+    "dev-cdn": "http-server ./dist -p 3786"
   },
   "keywords": [
     "typescript",
@@ -37,6 +38,7 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "http-server": "^14.1.1",
     "jsdom": "^26.0.0",
     "prettier": "^3.1.0",
     "tsup": "^7.2.0",

@@ -1,15 +1,7 @@
-import { vemetric, type Options } from './index';
+import { Vemetric, type Options } from './client';
+import type { VemetricMethod, QueueItem } from './types';
 
-type VemetricMethod = keyof typeof vemetric;
-type QueueItem = [VemetricMethod, ...unknown[]];
-
-declare global {
-  interface Window {
-    vmtrcq?: QueueItem[];
-    vmtrc?: (...args: QueueItem) => void;
-    Vemetric?: typeof vemetric;
-  }
-}
+const vemetric = new Vemetric();
 
 const executeMethod = (methodName: VemetricMethod, ...args: unknown[]) => {
   const method = vemetric[methodName];
@@ -20,7 +12,7 @@ const executeMethod = (methodName: VemetricMethod, ...args: unknown[]) => {
 };
 
 const scriptElement = document.currentScript as HTMLScriptElement;
-const options: Options = { token: '' };
+const options: Options = window.vmtrcOptions || { token: '' };
 if (scriptElement) {
   const token = scriptElement.getAttribute('data-token');
   if (token) {

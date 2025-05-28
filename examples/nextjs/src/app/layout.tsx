@@ -28,7 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <VemetricScript token="o1rySsGlUtFCyflo" host="https://hub.vemetric.local" />
+        <VemetricScript
+          token="o1rySsGlUtFCyflo"
+          scriptUrl="https://cdn.vemetric.local/main.js"
+          host="https://hub.vemetric.local"
+        />
         <div className={styles.nav}>
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>

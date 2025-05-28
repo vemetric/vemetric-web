@@ -5,14 +5,14 @@
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/react",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Official React SDK for Vemetric",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "prepublish": "pnpm run build",
-    "build": "tsup && node after-build.mjs",
+    "build": "tsup",
     "dev": "npm run build -- --watch",
     "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx . --fix"
   },

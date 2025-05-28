@@ -5,7 +5,7 @@
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/astro",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Official Astro SDK for Vemetric",
   "exports": {
     ".": {
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "prepublish": "pnpm run build",
-    "build": "tsup && node after-build.mjs && pnpm copy-astro",
+    "build": "tsup && pnpm copy-astro",
     "copy-astro": "cp src/component.ts dist/ && cp src/index.astro dist/",
     "dev": "npm run build -- --watch",
     "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx . --fix"

@@ -28,6 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <VemetricScript
           token="o1rySsGlUtFCyflo"
+          scriptUrl="https://cdn.vemetric.local/main.js"
           host="https://hub.vemetric.local"
           onInit={() => {
             console.log('Vemetric initialized');
