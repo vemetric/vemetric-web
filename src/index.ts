@@ -142,11 +142,14 @@ type EventProps = {
   beacon?: boolean;
 };
 
+type QueuedCall = () => void;
+
 class Vemetric {
   private options: Options = DEFAULT_OPTIONS;
   private isInitialized = false;
   private isIdentifying = false;
   private lastViewedPage?: string;
+  private readonly queue: QueuedCall[] = [];
 
   init(options: Options) {
     if (this.isInitialized) {
@@ -180,13 +183,11 @@ class Vemetric {
       this.enableTrackDataAttributes();
     }
 
-    return true;
-  }
-
-  private checkInitialized() {
-    if (!this.isInitialized) {
-      throw new Error('Vemetric is not initialized yet.');
+    while (this.queue.length) {
+      this.queue.shift()!();
     }
+
+    return true;
   }
 
   private ignoreRequest() {
@@ -263,8 +264,24 @@ class Vemetric {
     navigator.sendBeacon(`${this.options.host}${path}`, blob);
   }
 
+  private defer<T>(fn: () => T): T {
+    return new Promise<T>((resolve, reject) => {
+      this.queue.push(async () => {
+        try {
+          const result = await fn();
+          resolve(result);
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }) as unknown as T;
+  }
+
   async trackPageView() {
-    this.checkInitialized();
+    if (!this.isInitialized) {
+      await this.defer(() => this.trackPageView());
+      return;
+    }
 
     const currentUrl = getCurrentUrl();
     if (this.lastViewedPage === currentUrl) {
@@ -276,7 +293,10 @@ class Vemetric {
   }
 
   trackPageLeave() {
-    this.checkInitialized();
+    if (!this.isInitialized) {
+      this.defer(() => this.trackPageLeave());
+      return;
+    }
 
     const payload = {
       ...getBasicEventData(this.options),
@@ -286,8 +306,12 @@ class Vemetric {
   }
 
   async trackEvent(eventName: string, props: EventProps = {}) {
+    if (!this.isInitialized) {
+      await this.defer(() => this.trackEvent(eventName, props));
+      return;
+    }
+
     const { eventData, userData, beacon = false } = props;
-    this.checkInitialized();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const payload: any = {
@@ -313,12 +337,17 @@ class Vemetric {
     return sessionStorage.getItem(KEY_IDENTIFIER);
   }
 
-  async identify({ identifier, displayName, data, allowCookies: _allowCookies }: IdentifyProps) {
-    this.checkInitialized();
+  async identify(props: IdentifyProps) {
+    if (!this.isInitialized) {
+      await this.defer(() => this.identify(props));
+      return;
+    }
+
     if (this.isIdentifying) {
       return;
     }
     this.isIdentifying = true;
+    const { identifier, displayName, data, allowCookies: _allowCookies } = props;
 
     sessionStorage.setItem(KEY_IDENTIFIER, identifier);
     if (displayName) {
@@ -345,19 +374,26 @@ class Vemetric {
     }
   }
 
-  updateUser(data: UserDataProps) {
-    this.checkInitialized();
+  async updateUser(data: UserDataProps) {
+    if (!this.isInitialized) {
+      await this.defer(() => this.updateUser(data));
+      return;
+    }
 
     if (this.isIdentifying) {
       console.warn('Vemetric is identifying, skipping updateUser');
       return;
     }
 
-    this.sendRequest('/u', { data });
+    await this.sendRequest('/u', { data });
   }
 
   async resetUser() {
-    this.checkInitialized();
+    if (!this.isInitialized) {
+      await this.defer(() => this.resetUser());
+      return;
+    }
+
     sessionStorage.removeItem(KEY_IDENTIFIER);
     sessionStorage.removeItem(KEY_DISPLAY_NAME);
     await this.sendRequest('/r');

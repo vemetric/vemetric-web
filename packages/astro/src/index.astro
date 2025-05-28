@@ -24,7 +24,15 @@ const propsStr = JSON.stringify(Astro.props);
             sdk: 'astro',
           });
 
+          vemetric.trackPageView();
+
+          // here we're taking care of Astro's client-side navigation in case it's used
+          let firstPageView = true;
           document.addEventListener('astro:page-load', () => {
+            if (firstPageView) {
+              firstPageView = false;
+              return;
+            }
             vemetric.trackPageView();
           });
         } catch (err) {
