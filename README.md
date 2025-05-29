@@ -5,3 +5,5 @@
 Learn more about the Vemetric Web SDK in the [official docs](https://vemetric.com/docs/sdks/web-browser).
 
 You can also checkout the [NPM Package](https://www.npmjs.com/package/@vemetric/web).
+
+[![NPM Version](https://img.shields.io/npm/v/%40vemetric%2Fweb)](https://www.npmjs.com/package/@vemetric/web)

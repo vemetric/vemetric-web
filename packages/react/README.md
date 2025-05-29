@@ -5,3 +5,5 @@
 Learn more about the Vemetric React SDK in the [official docs](https://vemetric.com/docs/sdks/react).
 
 You can also checkout the [NPM Package](https://www.npmjs.com/package/@vemetric/react).
+
+[![NPM Version](https://img.shields.io/npm/v/%40vemetric%2Freact)](https://www.npmjs.com/package/@vemetric/react)
