@@ -24,7 +24,7 @@ class Vemetric implements IVemetric {
       return false;
     }
 
-    window.vmtrcOptions = options;
+    window.vmtrcOptions = { sdk: 'web', ...options };
     const script = document.createElement('script');
     script.src = options.scriptUrl || 'https://cdn.vemetric.com/main.js';
     script.defer = true;

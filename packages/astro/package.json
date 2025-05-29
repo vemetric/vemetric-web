@@ -5,7 +5,7 @@
     "url": "https://github.com/Vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/astro",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Official Astro SDK for Vemetric",
   "exports": {
     ".": {

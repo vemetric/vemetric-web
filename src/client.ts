@@ -14,7 +14,7 @@ const DEFAULT_OPTIONS: Options = {
   trackDataAttributes: true,
   allowCookies: false,
   maskPaths: [],
-  sdk: 'web',
+  sdk: 'script',
   sdkVersion: '%VEMETRIC_SDK_VERSION%',
 };
 
