@@ -20,7 +20,19 @@ const propsStr = JSON.stringify(Astro.props);
           const props = JSON.parse(this.dataset.props ?? '{}');
           vemetric.init({
             ...props,
+            trackPageViews: false,
             sdk: 'astro',
+          });
+
+          vemetric.trackPageView();
+
+          let firstPageView = true;
+          document.addEventListener('astro:page-load', () => {
+            if (firstPageView) {
+              firstPageView = false;
+              return;
+            }
+            vemetric.trackPageView();
           });
         } catch (err) {
           throw new Error(`Failed to parse VemetricScript properties: ${err}`);
