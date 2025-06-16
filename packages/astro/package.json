@@ -2,7 +2,7 @@
   "name": "@vemetric/astro",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vemetric/vemetric-web.git"
+    "url": "https://github.com/vemetric/vemetric-web.git"
   },
   "homepage": "https://vemetric.com/docs/sdks/astro",
   "version": "0.5.4",
