@@ -1,4 +1,5 @@
 import type { Options, EventProps, IdentifyProps, UserDataProps, IVemetric } from './types';
+import { getUserIdentifier, KEY_IDENTIFIER } from './util';
 
 declare global {
   interface Window {
@@ -19,7 +20,6 @@ const DEFAULT_OPTIONS: Options = {
 };
 
 const DATA_ATTRIBUTE_EVENT = 'data-vmtrc';
-const KEY_IDENTIFIER = '_vmId';
 const KEY_DISPLAY_NAME = '_vmDn';
 const KEY_CONTEXT_ID = '_vmCtx';
 
@@ -29,10 +29,6 @@ function getContextId() {
   }
 
   return sessionStorage.getItem(KEY_CONTEXT_ID);
-}
-
-function getUserIdentifier() {
-  return sessionStorage.getItem(KEY_IDENTIFIER) || undefined;
 }
 
 function getUserDisplayName() {
@@ -282,7 +278,7 @@ export class Vemetric implements IVemetric {
   }
 
   getUserIdentifier() {
-    return sessionStorage.getItem(KEY_IDENTIFIER);
+    return getUserIdentifier();
   }
 
   async identify(props: IdentifyProps) {

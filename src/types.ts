@@ -1,4 +1,4 @@
-import { vemetric } from '.';
+import { vemetric } from './index';
 
 export type Options = {
   token: string;
@@ -36,6 +36,7 @@ export interface IVemetric {
   trackPageView(): Promise<void>;
   trackPageLeave(): void;
   trackEvent(eventName: string, props?: EventProps): Promise<void>;
+  getUserIdentifier(): string | undefined;
   identify(props: IdentifyProps): Promise<void>;
   updateUser(data: UserDataProps): Promise<void>;
   resetUser(): Promise<void>;

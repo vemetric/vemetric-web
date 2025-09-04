@@ -6,6 +6,7 @@ import type {
   QueueItem,
   UserDataProps,
 } from './types';
+import { getUserIdentifier } from './util';
 
 export type Options = InternalOptions & { scriptUrl?: string };
 
@@ -63,6 +64,9 @@ class Vemetric implements IVemetric {
   }
   async trackEvent(eventName: string, props: EventProps = {}): Promise<void> {
     await window.vmtrc?.('trackEvent', eventName, props);
+  }
+  getUserIdentifier() {
+    return getUserIdentifier();
   }
   async identify(props: IdentifyProps): Promise<void> {
     await window.vmtrc?.('identify', props);
