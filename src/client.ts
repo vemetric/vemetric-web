@@ -121,7 +121,8 @@ export class Vemetric implements IVemetric {
     }
 
     if (!options.token || options.token.length < 3) {
-      throw new Error('Please provide your Public Token.');
+      console.error('Vemetric: Please provide your Public Token.');
+      return false;
     }
 
     this.options = { ...DEFAULT_OPTIONS, ...options };

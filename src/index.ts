@@ -21,7 +21,7 @@ if (typeof window !== 'undefined') {
 
 class Vemetric implements IVemetric {
   init(options: Options): boolean {
-    if (document.getElementById('vmtrc-scr')) {
+    if (document.getElementById('vmtrc-scr') || document.getElementById('vmtrc-scr-js')) {
       return false;
     }
 

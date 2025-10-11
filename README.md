@@ -1,8 +1,8 @@
-![Vemetric Web SDK](https://github.com/user-attachments/assets/8223fcb0-ec16-444e-a4a3-5fb08b40f0dd)
+![Vemetric JavaScript SDK](https://github.com/user-attachments/assets/8223fcb0-ec16-444e-a4a3-5fb08b40f0dd)
 
-# The Vemetric SDK for the Web (Browser)
+# The Vemetric SDK for JavaScript (Browser)
 
-Learn more about the Vemetric Web SDK in the [official docs](https://vemetric.com/docs/sdks/web-browser).
+Learn more about the Vemetric JavaScript SDK in the [official docs](https://vemetric.com/docs/sdks/javascript).
 
 You can also checkout the [NPM Package](https://www.npmjs.com/package/@vemetric/web).
 
