@@ -28,7 +28,7 @@
     "web",
     "vemetric"
   ],
-  "author": "Vemetric",
+  "author": "Vemetric <info@vemetric.com> (https://vemetric.com/)",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.11.0",
