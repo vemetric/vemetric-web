@@ -1,4 +1,4 @@
-import type { Options, EventProps, IdentifyProps, UserDataProps, IVemetric } from './types';
+import type { Options, EventProps, IdentifyProps, IVemetric, UpdateUserProps } from './types';
 import { getUserIdentifier, KEY_IDENTIFIER } from './util';
 
 declare global {
@@ -289,7 +289,7 @@ export class Vemetric implements IVemetric {
       return;
     }
     this.isIdentifying = true;
-    const { identifier, displayName, data, allowCookies: _allowCookies } = props;
+    const { identifier, displayName, avatarUrl, data, allowCookies: _allowCookies } = props;
 
     sessionStorage.setItem(KEY_IDENTIFIER, identifier);
     if (displayName) {
@@ -301,6 +301,7 @@ export class Vemetric implements IVemetric {
     const payload = {
       identifier,
       displayName,
+      avatarUrl,
       data,
     };
 
@@ -316,7 +317,7 @@ export class Vemetric implements IVemetric {
     }
   }
 
-  async updateUser(data: UserDataProps) {
+  async updateUser(props: UpdateUserProps) {
     this.checkInitialized();
 
     if (this.isIdentifying) {
@@ -324,7 +325,8 @@ export class Vemetric implements IVemetric {
       return;
     }
 
-    await this.sendRequest('/u', { data });
+    const { displayName, avatarUrl, ...data } = props;
+    await this.sendRequest('/u', { data, displayName, avatarUrl });
   }
 
   async resetUser() {

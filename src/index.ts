@@ -4,7 +4,7 @@ import type {
   IVemetric,
   Options as InternalOptions,
   QueueItem,
-  UserDataProps,
+  UpdateUserProps,
 } from './types';
 import { getUserIdentifier } from './util';
 
@@ -71,7 +71,7 @@ class Vemetric implements IVemetric {
   async identify(props: IdentifyProps): Promise<void> {
     await window.vmtrc?.('identify', props);
   }
-  async updateUser(data: UserDataProps): Promise<void> {
+  async updateUser(data: UpdateUserProps): Promise<void> {
     await window.vmtrc?.('updateUser', data);
   }
   async resetUser(): Promise<void> {

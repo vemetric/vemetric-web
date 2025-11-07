@@ -18,9 +18,15 @@ export type UserDataProps = {
   unset?: Array<string>;
 };
 
+export type UpdateUserProps = UserDataProps & {
+  displayName?: string;
+  avatarUrl?: string;
+};
+
 export type IdentifyProps = {
   identifier: string;
   displayName?: string;
+  avatarUrl?: string;
   data?: UserDataProps;
   allowCookies?: boolean;
 };
