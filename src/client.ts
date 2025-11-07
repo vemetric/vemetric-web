@@ -325,8 +325,13 @@ export class Vemetric implements IVemetric {
       return;
     }
 
+    if (!getUserIdentifier()) {
+      console.warn('Vemetric: No user identified, cannot update user.');
+      return;
+    }
+
     const { displayName, avatarUrl, ...data } = props;
-    await this.sendRequest('/u', { data, displayName, avatarUrl });
+    await this.sendRequest('/u', { data, displayName, avatarUrl, identifier: getUserIdentifier() });
   }
 
   async resetUser() {
