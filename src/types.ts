@@ -7,6 +7,7 @@ export type Options = {
   trackOutboundLinks?: boolean;
   trackDataAttributes?: boolean;
   allowCookies?: boolean;
+  allowLocalhost?: boolean;
   maskPaths?: string[];
   sdk?: string;
   sdkVersion?: string;

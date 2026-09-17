@@ -39,6 +39,9 @@ class Vemetric implements IVemetric {
     if (typeof options.allowCookies === 'boolean') {
       script.dataset.allowCookies = String(options.allowCookies);
     }
+    if (typeof options.allowLocalhost === 'boolean') {
+      script.dataset.allowLocalhost = String(options.allowLocalhost);
+    }
     if (typeof options.trackPageViews === 'boolean') {
       script.dataset.trackPageViews = String(options.trackPageViews);
     }

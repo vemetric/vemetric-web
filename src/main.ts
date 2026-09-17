@@ -29,6 +29,11 @@ if (scriptElement) {
     options.allowCookies = allowCookies === 'true';
   }
 
+  const allowLocalhost = scriptElement.getAttribute('data-allow-localhost');
+  if (allowLocalhost) {
+    options.allowLocalhost = allowLocalhost === 'true';
+  }
+
   const trackPageViews = scriptElement.getAttribute('data-track-page-views');
   if (trackPageViews) {
     options.trackPageViews = trackPageViews !== 'false';

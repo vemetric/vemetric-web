@@ -14,6 +14,7 @@ const DEFAULT_OPTIONS: Options = {
   trackOutboundLinks: true,
   trackDataAttributes: true,
   allowCookies: false,
+  allowLocalhost: false,
   maskPaths: [],
   sdk: 'script',
   sdkVersion: '%VEMETRIC_SDK_VERSION%',
@@ -60,6 +61,10 @@ function getCurrentUrl() {
 function isLocalhost() {
   const hostname = window.location.hostname;
   return hostname === 'localhost' || hostname === '127.0.0.1' || hostname.startsWith('localhost:');
+}
+
+function isLocalhostBlocked(options: Options) {
+  return isLocalhost() && !options.allowLocalhost;
 }
 
 function getBasicEventData(options?: Options) {
@@ -129,7 +134,7 @@ export class Vemetric implements IVemetric {
     this.options.maskPaths?.sort((a, b) => b.length - a.length);
     this.isInitialized = true;
 
-    if (isLocalhost()) {
+    if (isLocalhostBlocked(this.options)) {
       console.warn('Vemetric is ignoring requests because it is running on localhost.');
     }
 
@@ -158,7 +163,7 @@ export class Vemetric implements IVemetric {
   }
 
   private ignoreRequest() {
-    if (isLocalhost() || window.location.protocol === 'file:') {
+    if (isLocalhostBlocked(this.options) || window.location.protocol === 'file:') {
       return true;
     }
 
