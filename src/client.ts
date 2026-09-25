@@ -296,13 +296,6 @@ export class Vemetric implements IVemetric {
     this.isIdentifying = true;
     const { identifier, displayName, avatarUrl, data, allowCookies: _allowCookies } = props;
 
-    sessionStorage.setItem(KEY_IDENTIFIER, identifier);
-    if (displayName) {
-      sessionStorage.setItem(KEY_DISPLAY_NAME, displayName);
-    } else {
-      sessionStorage.removeItem(KEY_DISPLAY_NAME);
-    }
-
     const payload = {
       identifier,
       displayName,
@@ -314,6 +307,13 @@ export class Vemetric implements IVemetric {
       await this.sendRequest('/i', payload, {
         'Allow-Cookies': String(this.options.allowCookies || _allowCookies || false),
       });
+
+      sessionStorage.setItem(KEY_IDENTIFIER, identifier);
+      if (displayName) {
+        sessionStorage.setItem(KEY_DISPLAY_NAME, displayName);
+      } else {
+        sessionStorage.removeItem(KEY_DISPLAY_NAME);
+      }
     } catch {
       sessionStorage.removeItem(KEY_IDENTIFIER);
       sessionStorage.removeItem(KEY_DISPLAY_NAME);
