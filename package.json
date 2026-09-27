@@ -10,16 +10,21 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepublish": "pnpm run build",
-    "build": "tsup && node after-build.mjs",
-    "dev": "npm run build -- --watch",
-    "lint": "eslint --max-warnings=0 --ext .js,.jsx,.ts,.tsx . --fix",
+    "build": "tsdown && node after-build.mjs",
+    "dev": "tsdown --watch",
+    "lint": "eslint --max-warnings=0 . --fix",
     "publish-cdn": "npm run build && node publish-cdn.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "new-version": "node new-version.mjs",
-    "dev-cdn": "http-server ./dist -p 3786"
+    "dev-cdn": "http-server ./dist -p 3786",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [
     "typescript",
@@ -31,18 +36,19 @@
   "author": "Vemetric <info@vemetric.com> (https://vemetric.com/)",
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^6.11.0",
-    "aws-sdk": "^2.1692.0",
-    "eslint": "^8.53.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-unused-imports": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.1140.0",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "globals": "^17.12.0",
     "http-server": "^14.1.1",
-    "jsdom": "^26.0.0",
-    "prettier": "^3.1.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "vitest": "^3.0.7"
-  }
+    "jsdom": "^30.1.1",
+    "prettier": "^3.9.9",
+    "tsdown": "^0.23.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "vitest": "^5.0.2"
+  },
+  "packageManager": "pnpm@11.27.1"
 }

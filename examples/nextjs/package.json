@@ -2,24 +2,23 @@
   "name": "@vemetric/nextjs-example",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 8080",
+    "dev": "next dev --port 8080",
     "build": "next build",
     "start": "next start --port 8080",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@vemetric/react": "file:../../packages/react",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.2"
+    "next": "16.3.6",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.2",
-    "@eslint/eslintrc": "^3"
+    "@types/node": "^24.13.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.3.6",
+    "typescript": "^6.0.3"
   }
 }

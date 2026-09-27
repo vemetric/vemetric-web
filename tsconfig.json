@@ -1,7 +1,7 @@
 {
   "display": "Default",
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2018",
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -9,13 +9,14 @@
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
     "isolatedModules": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "module": "esnext"
   },
   "include": ["./src/**/*.ts"],
   "exclude": ["dist", "node_modules"]
