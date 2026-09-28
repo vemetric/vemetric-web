@@ -8,7 +8,7 @@ import type {
 } from './types';
 import { getUserIdentifier } from './util';
 
-export type Options = InternalOptions & { scriptUrl?: string };
+type Options = InternalOptions & { scriptUrl?: string };
 
 if (typeof window !== 'undefined') {
   window.vmtrcq = window.vmtrcq || [];
@@ -91,4 +91,6 @@ class Vemetric implements IVemetric {
   }
 }
 
-export const vemetric = new Vemetric();
+const vemetric = new Vemetric();
+
+export { vemetric, type Options };

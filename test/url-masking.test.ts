@@ -129,10 +129,12 @@ describe('URL Masking', () => {
     mockUrl('https://example.com/product/789/detail/efg');
 
     // Mock the Blob constructor
-    Blob = vi.fn().mockImplementation((content) => ({
-      content: content[0],
-      type: content[1],
-    }));
+    Blob = vi.fn().mockImplementation(function (content) {
+      return {
+        content: content[0],
+        type: content[1],
+      };
+    });
 
     // Mock navigator.sendBeacon
     navigator.sendBeacon = vi.fn();

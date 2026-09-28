@@ -32,12 +32,12 @@ rl.question('What should the new version be? ', (newVersion) => {
         pkgJson.version = newVersion;
         writeFileSync(pkgJsonPath, JSON.stringify(pkgJson, null, 2) + '\n');
         console.log(`Updated version in packages/${pkg}/package.json`);
-      } catch (err) {
+      } catch {
         // Skip if package.json doesn't exist
         continue;
       }
     }
-  } catch (err) {
+  } catch {
     // Skip if packages directory doesn't exist
     console.log('No packages directory found');
   }

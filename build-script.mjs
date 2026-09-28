@@ -10,7 +10,8 @@ export function buildScript() {
 
   const distDir = join(__dirname, 'dist');
 
-  const mainJs =
-    readFileSync(join(distDir, 'main.js'), 'utf8').replace('"use strict";', '"use strict";(function (){') + '})();';
-  return `/*${version}*/${mainJs}`;
+  // wrap the code in an IIFE, so that it doesn't leak any variables into the global scope
+  // "use strict" is placed inside the IIFE, so it doesn't affect other scripts if our script gets concatenated with them
+  const mainJs = readFileSync(join(distDir, 'main.js'), 'utf8').replace(/^"use strict";/, '');
+  return `/*${version}*/(function (){"use strict";${mainJs}})();`;
 }
